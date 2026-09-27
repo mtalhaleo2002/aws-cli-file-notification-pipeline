@@ -1,0 +1,19 @@
+# Local AWS settings and credentials
+.aws/
+.env
+.env.*
+assignment-env.sh
+lambda-environment.json
+*credentials*
+*secret*
+
+# Generated files
+__pycache__/
+*.pyc
+*.zip
+
+# Local execution output
+response.json
+
+# Rendered local policy files
+private-policies/

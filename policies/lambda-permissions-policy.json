@@ -1,0 +1,33 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadSampleFileMetadata",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<BUCKET_NAME>/sample.txt"
+    },
+    {
+      "Sid": "ConsumeAssignmentQueue",
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ReceiveMessage",
+        "sqs:DeleteMessage",
+        "sqs:GetQueueAttributes"
+      ],
+      "Resource": "<QUEUE_ARN>"
+    },
+    {
+      "Sid": "PublishFileNotification",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "<TOPIC_ARN>"
+    },
+    {
+      "Sid": "WriteProcessingLogs",
+      "Effect": "Allow",
+      "Action": "logs:PutLogEvents",
+      "Resource": "<LOG_STREAM_ARN>"
+    }
+  ]
+}

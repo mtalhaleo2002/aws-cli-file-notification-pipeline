@@ -1,0 +1,36 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ManageAssignmentFunction",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:GetFunction",
+        "lambda:GetFunctionConfiguration",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:InvokeFunction",
+        "lambda:DeleteFunction"
+      ],
+      "Resource": "arn:aws:lambda:eu-north-1:<ACCOUNT_ID>:function:talha-file-notifier"
+    },
+    {
+      "Sid": "PassOnlyAssignmentRoleToLambda",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "<ROLE_ARN>",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "lambda.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "ReadProcessingLogs",
+      "Effect": "Allow",
+      "Action": "logs:GetLogEvents",
+      "Resource": "<LOG_STREAM_ARN>"
+    }
+  ]
+}
